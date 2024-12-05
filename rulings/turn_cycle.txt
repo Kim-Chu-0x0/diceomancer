@@ -1,0 +1,18 @@
+00  upkeep
+    00  beginning
+    01  regen_mana
+    02  draw
+    03  end
+;
+
+01  mainphase
+    00  beginning
+    01  mainphase
+    02  end
+;
+
+02 endstep
+    00  beginning
+    01  discard
+    02  end
+;

@@ -1,0 +1,31 @@
+01
+upkeep 0
+phase upkeep my beginning ;
+
+02
+endstep 0
+phase endstep my end ;
+
+03
+draw 1
+command draw my ;
+
+04
+cast_spell 1
+event 1 ;
+
+05
+attacking 0
+command tag damage my ;
+
+06
+take_damage 0
+command tag damage oppo ;
+
+07
+d 1
+event 2 ;
+
+08
+apply 0
+instant ;

@@ -1,0 +1,184 @@
+000
+strength    力量    visible
+when attacking
+damage increase stack ;
+
+001
+thron   荆棘    visible
+when take_damage
+attacker lose stack life ;
+
+002
+armour  坚韧    visible
+when take_damage
+damage reduce stack ;
+when endstep
+stack divides 2 ;
+
+003
+crit    暴击    visible
+when attacking
+if stack check d 20
+damage times 2 ; ;
+when endstep
+stack divides 2 ;
+
+004
+weakness    易伤    visible
+when take_damage
+if stack check d 20
+damage times 2 ; ;
+when upkeep
+stack divides 2 ;
+
+005
+fragile 脆皮    visible
+when take_damage
+damage increase stack ;
+when upkeep
+stack divides 2 ;
+
+006
+debility    虚弱    visible
+when attacking
+if stack check d 20
+damage divides 2 ; ;
+when endstep
+stack divides 2 ;
+
+007
+dodge   闪避    visible
+when take_damage
+if stack check d 20
+stack divides 2
+damage times 0 ; ;
+when endstep
+stack divides 2 ;
+
+008
+injure  负伤    visible
+when endstep
+stack divides 2
+self lose stack life ;
+
+009
+bleed   流血    visible
+when endstep
+self lose stack life
+stack divides 2 ;
+
+010
+burn    燃烧    visible
+when endstep
+self lose stack life
+stack divides 2 ;
+
+011
+vigor   活力    visible
+when cast_spell
+mana gain 1 C
+stack divides 2 ;
+when endstep
+stack divides 2 ;
+
+012
+accelerate  加速    visible
+when cast_spell
+draw 1
+stack divides 2 ;
+when endstep
+stack divides 2 ;
+
+013
+reinforce   加固    visible
+when endstep
+self gain stack block
+stack divides 2 ;
+
+014
+fatigue 无力    visible
+when attacking
+damage reduce stack ;
+when endstep
+stack divides 2 ;
+
+015
+blind   目盲    visible
+when cast_spell
+if not stack check d 20
+spell miss ; ;
+when endstep
+stack times 0 ;
+
+016
+stock   囤积    visible
+when endstep
+choose up_to stack card in_hand
+chosen gain keep
+stack reduce that_many ;
+
+017
+dice_cheating_maximum   骰子作弊大  visible
+when d
+change result dice_size
+stack reduce 1 ;
+
+018
+dice_cheating_minimum   骰子作弊小  visible
+when d
+change result 1
+stack reduce 1 ;
+
+019
+damage  伤害    hidden
+when apply
+self lose stack life
+stack times 0 ;
+
+020
+lucky   幸运    visible
+when d
+var1 d dice_size
+if var1 greater_than result
+change reduce var1 ;
+stack reduce 1;
+
+021
+unlucky 不幸    visible
+when d
+var1 d dice_size
+if result greater_than var1
+change reduce var1 ;
+var1 clear;
+stack reduce 1;
+
+022
+obtuse  迟缓    visible
+when cast_spell
+mana lose right_most
+stack reduce 1;
+when endstep
+stack times 0 ;
+
+023
+panic   慌乱    visible
+when cast_spell
+discard random
+stack reduce 1;
+when endstep
+stack times 0 ;
+
+024
+enrage  狂怒    visible
+when upkeep
+until mana_full
+mana gain 1 R
+stack reduce 1; ;
+
+025
+block   格挡    visible
+when take_damage
+damage reduce stack
+stack reduce damage ;
+when upkeep
+stack times 0 ;
